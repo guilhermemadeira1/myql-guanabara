@@ -1,0 +1,11 @@
+Parâmetros de conexão ao banco de dados MySQL
+
+HOSTNAME -> Endereço/Nome do servidor para se conectar a ele.
+PORT -> Número que identifica um serviço específico disponibilizado pelo servidor (no caso do MySQL, um sistema de gestão de bancos de dados).
+USER -> Identicador da aplicação cliente que se conecta ao servidor por meio de uma Porta para acessar o serviço (para acessar o SGBD/BDMS do MySQL: PORT=3306 por padrão).
+PASSWORD -> Senha de acesso para verficar e autenticar o usuário cliente que acessa o servidor, por questões de segurança.
+CONNECTION METHOD -> Método que o cliente usa para se conectar ao servidor, seja via protocolo TCP/IP, Drivers de Conexão, protocolo SSH, entre outros.
+
+O WorkBench é uma aplicação cliente que acessa o servidor do MySQL.
+
+

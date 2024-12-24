@@ -1,0 +1,26 @@
+O MySQL workbench é uma aplicação cliente que se conecta ao servidor do BDMS/SGBD do MySQL.
+
+O MySQL console ou MySQL CLI é uma aplicação cliente que interage com o servidor via linha de comando. 
+Após conectar ao servidor pelo CLI, basta especificar (usando USE <database>) o database e digitar os comandos SQL diretamente. 
+
+O phpMyAdmin é um cliente web para acessar o MySQL, feito em php que roda sobre um servidor Apache . Para acessar, é necessario estar rodando o
+servidor Apache e o servidor do BDMS do MySQL.
+
+Para acessar o Servidor Local:
+	Acessar o Shell do XAMPP Control Panel
+	mysql -u root -p (será solicitado para digitar a senha do root, se não houver: clicar enter)
+
+Para acessar o servidor Remoto:  
+	mysql -u <usuario> -p (será solicitado para digitar a senha do usuario que tem permissão para acessar o banco)
+
+Acessar o database/schema: (Não esquecer o ";" no fim dos comandos SQL)
+	USE <database>;
+
+Exibir os databases;
+	SHOW DATABASES;
+
+Exibir as Tabelas:
+	SHOW TABLES;
+
+Sair do CLI e desconectar do servidor do banco:
+	EXIT;

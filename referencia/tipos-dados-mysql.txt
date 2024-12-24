@@ -1,0 +1,86 @@
+tipos de dados mysql 
+
+DUMP é um backup ou cópia dos dados de uma base de dados, incluindo: tabelas, colunas, registros, schemas, views, triggers, indexes, etc.
+Um dump é comumente usado para restaurar dados em incidentes, exportar dados de um servidor pra outro e realizar testes.
+
+OBS: Em alguns DBMS (DataBase Management System), como o MySQL, um schema é sinônimo de database. 
+Já em outros como PostgreSQL, um database pode ser formado por um ou vários schemas que servem como um contêiner 
+ou agregado para tabelas, registros, views e outros dados que organizam a estrutura da base de dados e evitam conflitos de nomes. 
+Por exemplo, no mesmo database poderia haver duas tabelas com o mesmo nome, porém em schemas diferentes.
+
+== numéricos (inteiros e reais): 							tamanho:
+
+TINYINT   -> inteiros de -128 a 127.                            --              	1 byte (8 bits).
+SMALLINT  -> inteiros de -32.768 a 32.767.       	        --			2 bytes.
+MEDIUMINT -> inteiros de -8.388.608 a 8.388.607.  	        --			3 bytes.
+INT       -> inteiros de -2.147.483.648 a 2.147.483.647.        --			4 bytes.
+BIGINT    -> inteiros de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807. 	8 bytes.
+
+FLOAT     -> reais com até 7 dígitos decimais.		             --			4 bytes.
+DOUBLE    -> reais com até 15 dígitos decimais.                      --			8 bytes.		
+
+DECIMAL(total,casas)  -> a quantidade de dígitos totais              --                 <variável>
+			e casas decimais são definidas manualmente.                     
+
+ex: decimal(10,2) tem limite de até 10 dígitos no total com 2 deles sendo casas decimais (até 8 dígitos inteiros com 2 decimais).
+
+BIT 	  -> Armazena valores em formato de bits (conjuntos de 0 e 1) 	     --		limite de 64 bytes
+BOOLEAN   -> Armazena valores lógicos 0 para false e 1 para true             --		1 bit	
+
+
+== tempo (data e hora):
+
+DATE 	   -> Armazena uma data no formato YYYY-MM-DD (ano-mês-dia).	     --		3 bytes
+YEAR 	   -> Armazena um ano no formato YYYY (4 dígitos para ano).          --		1 byte
+TIME 	   -> Armazena hora no formato HH:MM:SS (hora:minuto:segundo).	     --         3 bytes
+
+DATETIME   -> Armazena data e hora no formato YYYY-MM-DD HH:MM:SS            --         8 bytes
+	     (ano-mês-dia hora:minuto:segundo).
+
+TIMESTAMP  -> Armazena data e hora YYYY-MM-DD HH:MM:SS porém no              --         4 bytes
+	     fuso horário UTC (Coordinated Universal Time/ 
+	     Tempo Universal Coordenado).
+
+
+== literais:
+
+= texto (conjunto de caracteres):	 
+
+tinytext 			-> Armazena texto de tamanho variável com limite de 255 caracteres.
+text 				-> Armazena texto de tamanho variável com limite de 65.535 caracteres.
+mediumtext 			-> Armazena texto de tamanho variável com limite de 16.777.215.
+longtext 			-> Armazena texto de tamanho variável com limite de 4.294.267.295 caracteres.
+						
+char(total de caracteres) 	-> conjunto com tamanho fixo e pré-definido (os caracteres que sobram, são armazenados como espaço em branco).
+
+varchar(limite de caracteres) 	-> conjunto de com tamanho variável, porém com limite pré-definido (os que sobram não são armazenados na memória).
+
+
+== binários (imagens, audios, arquivos, etc.):
+
+BINARY(total de bytes)       -> Armazena dados binários com tamanho fixo de bytes (os bytes não preenchidos são armazenados com valor 0). 
+Ex: binary(10) armazena um TOTAL FIXO de 10 bytes de dados.
+
+VARBINARY(limite de bytes)   -> Armazena dados binários com tamanho variável até um certo limite de bytes (os bytes que sobram não são armazenados). 
+Ex: varbinary(10) armazena dados de ATÉ 10 bytes.
+
+TINYBLOB     -> Armazena até o limite de 255 bytes com tamanho variável.
+BLOB 	     -> Armazena até o limite de 65.535 bytes (65 KB) com tamanho variável.
+MEDIUMBLOB   -> Armazena até 16.777.215 bytes (16 MB) com tamanho variável.
+LONGBLOB     -> Armazena até 4.294.967.295 bytes (4 GB) com tamanho variável.
+
+
+== Coleções (enumerações e conjuntos):
+
+ENUM -> Define uma sequência de valores possíveis a um campo 
+e permite armazenar apenas um dos valores possíveis.
+
+Ex:   CREATE TABLE pessoa(sexo ENUM('f','m'));
+      INSERT INTO pessoa(sexo) VALUES 'f';
+
+
+SET -> Define uma sequência de valores possíveis a um campo 
+e permite armazenar um ou um conjunto de valores a partir dos valores possíveis.
+
+Ex:  CREATE TABLE mensagem(modalidade SET('sms','email','whatsapp'));
+     INSERT INTO mensagem(modalidade) VALUES ('sms, email');

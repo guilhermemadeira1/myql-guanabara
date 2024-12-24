@@ -1,0 +1,8 @@
+familias de sub-linguagens sql
+
+
+DDL (Data Definition Language) -> Define a estrutura de um banco de dados (CREATE, ALTER, DROP, ADD);
+DML (Data Manipulation Language) -> Manipula dados (INSERT, DELETE, UPDATE, TRUNCATE); 
+DQL (Data Query Language) -> Consulta dados (SELECT);
+DCL (Data Control Language) -> Gerencia permissões de usuários no banco de dados (GRANT - concedir, REVOKE - revogar);
+TCL (Transaction Control Language) -> Gerencia transações (BEGIN, COMMIT, ROLLBACK);

@@ -1,7 +1,8 @@
-pasta para armazenar cópias de backup para os dados e os os databases
-dumps = cópias de segurança 
+este diretório é para armazenar cópias de backup para os dados e os os databases
 
-Exportar dump (criar e exportar arquivos SQL que constroem a estrutura do banco e dos dados).
-Importar dump (importar arquivos SQL para construir a estrutura do banco e dos dados).
+dumps = cópias de segurança do banco de dados. O DBMS gera SQL para recuperar a estrutura do banco e dos dados.
 
-No php, clicar na casinha antes de exportar um dump. Ao exportar, ele será baixado na pasta downloads.
+Exportar dump -> cria e exporta arquivos SQL que definem a estrutura do database (tabelas,colunas,chaves,etc) e dos dados (registros).
+Importar dump -> importa arquivos SQL para definir a estrutura do banco e dos dados.
+
+No phpMyAdmin, clicar na casinha antes de exportar um dump. Ao exportar, ele será baixado na pasta downloads.

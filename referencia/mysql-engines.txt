@@ -1,0 +1,19 @@
+Engine -> É o "motor" ou o mecanismo que realiza o armazenamento, manipulação e consulta de dados em um DBMS/SGBD 
+relacional ou não relacional.
+Um mesmo SGBD pode escolher entre uma variedade de engines com diferentes mecanismos que atendam às necessidades do projeto de banco de dados.
+
+O MySQL usa a engine InnoDB por padrão, que possui suporte para transações ACID (Atomicidade, Consistencia, Isolamento e Durabiliade), integridade referencial.
+MyISAM é um mecanismo mais antigo que não suporta transações ACID, mas é otimizado para grandes quantidades de leituras.
+
+
+Uma transação é um conjunto de operações de leitura, escrita ou definição de dados que são tratadas como uma mesma unidade de trabalho no banco de dados.
+ACID define um conjunto de princípios que as transações devem aderir para garantir que a integridade do banco de dados.
+
+Atomicidade -> Transações devem ser tratadas como uma unidade de trabalho que são realizadas com sucesso ou caso contrário são anuladas.
+
+Consistência -> Uma transação deve levar o banco de um estado consistente (válido) para outro estado consistente, não importa quais operações sejam realizadas.
+
+Isolamento -> Uma transação não pode interferir no resultado de outra transação concorrente enquanto não tiver sido concluída.
+As operações da transação só ficam visíveis pra outras transações após ser concluída (commited).
+
+Durabilidade -> Quando uma transação é concluída (commited) suas alterações não podem ser revertidas, mesmo em casos de falha no sistema.

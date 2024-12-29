@@ -16,6 +16,7 @@ CREATE TABLE pessoas(
     PRIMARY KEY(id)
 )DEFAULT CHARSET=utf8;
 
+
 # Os valores numéricos inteiros e decimais podem ser passados entre aspas ou sem aspas.
 INSERT INTO pessoas(nome, nascimento, sexo, peso, altura)
 VALUES ('GODOFREDO','1984-01-02', 'M', '78.5', '1.83');

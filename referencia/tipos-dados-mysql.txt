@@ -39,7 +39,7 @@ DATETIME   -> Armazena data e hora no formato YYYY-MM-DD HH:MM:SS            -- 
 
 TIMESTAMP  -> Armazena data e hora YYYY-MM-DD HH:MM:SS porém no              --         4 bytes
 	     fuso horário UTC (Coordinated Universal Time/ 
-	     Tempo Universal Coordenado).
+	     Tempo Universal Coordenado - Fuso horario automatico).
 
 
 == literais:

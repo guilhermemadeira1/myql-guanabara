@@ -1,6 +1,6 @@
 use cadastro;
 
-SELECT id_aluno,idcurso,
+SELECT id_aluno,id_curso,
 	concat_ws(' vive em ',alunos.nome, alunos.nacionalidade) AS aluno, #concat_ws -> concat With Saparator, primeiro parametro é o separador
     concat(id_aluno,'e está cursando ',cursos.nome) AS cursando # concat -> concatena valores em uma string: concat(val1,' ',val2 ), concat(' ',val1)
     FROM alunos JOIN cursos ON id_aluno=idcurso;
@@ -20,7 +20,7 @@ SELECT id_aluno,idcurso,
 
 SELECT alunos.nome, cursos.nome 
 FROM cadastro.alunos
-JOIN cursos ON alunos.id_aluno = cursos.idcurso
+JOIN cursos ON alunos.id_aluno = cursos.id_curso
 WHERE nascimento BETWEEN '1970-01-01' AND '2010-12-31'
 GROUP BY nome HAVING sexo = 'm' AND sexo = 'f'
 ORDER BY nome ASC

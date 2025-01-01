@@ -1,0 +1,84 @@
+Modelo relacional de banco de dados
+
+O modelo relacional define uma forma estruturada de armazenar dados usando tabelas, colunas e tuplas, facilitando a associação/relação
+entre diversos registros de tabelas (ou entidades) distintas. A relação entre registros de tabelas distintas é definida indiretamente por valores chave.
+
+	Entidade -> abstração que agrupa ocorrências com os mesmos atributos. No modelo relacional, a entidade é mapeada para uma tabela.
+
+	Ocorrrência -> é um registro individual da entidade com valores de atributo específicos. No modelo relacional, cada ocorrência 
+	é uma linha (ou tupla).
+
+	Atributos -> definem quais tipos de informações cada ocorrência individual poderá armazenar. No modelo relacional, são definidos 
+	pelas colunas.
+	
+	Relacionamento -> vínculo que une as ocorrências de duas ou mais entidades.
+
+	Entidade associativa -> entidade criada a partir de um relacionamento de muitos pra muitos e serve para vincular duas ou mais entidades.
+	Relacionamentos que possuem atributos próprios também são convertidos em entidade associativa.
+
+	Cardinalidade -> especifica número mínimo (0 ou 1) e máximo (1 ou muitos) de ocorrências para tabelas relacionadas. Também informa se um atributo
+	é obrigatório(1) ou opcional(0). Cardinalidades mínima (ocorrência obrigatória ou opcional) e máxima (um ou várias ocorrências).
+
+	Chave primária -> Atributo único que identifica um registro específico de uma tabela.
+
+	Chave estrangeira -> Atributo cujo valor faz referência a chave primária de um registro de outra tabela, permitindo associar registros de
+	diferentes tabelas. O tipo de dado (número, texto, etc) da chave estrangeira deve ser compatível com o tipo de dado da chave primária que referencia. 
+
+
+Tipos de relacionamentos (binários) entre entidades. 
+
+	OBS: Um relacionamento X pra X considera só as cardinalidades máximas das entidades (o número máximo de ocorrências). 
+
+Um pra um -> Em um relacionameto 1 a 1 entre duas entidades, cada ocorrência deve estar obrigatoriamente associada 
+a apenas uma ocorrência da outra. 
+
+        Ex: Com duas entidades passageiro e passaporte, um passageiro pode estar associado a apenas um passaporte
+        e vice-versa, e o passageiro deve informar seu passaporte.
+
+Um pra muitos -> Em um relacionameto 1 a N entre duas entidades, a ocorrência de uma das entidades pode estar associada 
+a uma ou mais ocorrências da outra entidade.
+
+        Ex: Com duas entidades autor e livro, vinculados por autoria, um autor pode ter escrito um ou vários livros 
+	e cada livro registrado deve ter sido escrito por um e apenas um autor.
+
+Muitos pra muitos -> Em um relacionacionamento N a N entre duas entidades, cada ocorrência está associada a no mínimo uma ou 
+várias ocorrências da outra entidade. O relacionamento destas deve ser representado como uma entidade associativa (entidade que interliga outras entidades).
+
+        Ex: Com duas entidades aluno e curso, vinculados por matrícula, um aluno pode estar matriculado
+        em um ou vários cursos e um curso pode incluir um ou vários alunos.
+
+1 pra nenhum -> Em um relacionamento 1 a 0 entre duas entidades, uma ocorrência da primeira entidade pode estar opcionalmente associada
+a uma única ocorrência da segunda, enquanto a segunda deve obrigatoriamente estar associada a apenas uma ocorrência da primeira.
+
+	Ex: Com duas entidades cidadão e carteira de motorista, um registro de cidadão pode estar opcionalmente associado a uma 
+	carteira enquanto um registro de carteira deve estar associado a um e apenas um cidadão.
+
+Muitos pra nenhum -> Em um relacionamento de N a 0 entre duas entidades, uma ocorrência da primeira entidade pode estar opcionalmente
+associada a uma única ocorrência da segunda, enquanto a segunda pode estar associada a pelo menos uma ou várias ocorrências da primeira.
+	
+	Ex: Com duas entidades estudante e projeto, um estudante pode opcionalmente colaborar em um projeto enquanto um projeto ser
+	planejado por pelo menos um ou mais estudantes. 
+
+
+Mapeamento conceitual-relacional (Do diagrama de entidade e relacionamento pro modelo relacional)
+
+Mapear uma tabela do modelo conceitual pro relacional envolve definir a estrutura das tabelas e suas relações com base em diagramas
+de entidade e relacionamento. 
+
+1 pra 1 -> Criar tabela pra cada entidade, sendo que ao menos a dominante deve possuir uma chave estrangeira que referencia a chave primária 
+da tabela da entidade dependente.
+
+1 pra N -> Criar tabela pra cada entidade, sendo que a tabela do "lado N" do relacionamento deve possuir uma chave estrangeira que referencia
+a chave primária da tabela do "lado 1". 
+
+1 pra 0 -> Criar tabela pra cada entidade, sendo que a tabela do "lado 1" deve possuir uma chave estrangeira opcional que pode referenciar ou
+não referenciar a chave primária da tabela do "lado 0" do relacionamento.
+
+N pra N -> Criar tabela pra cada entidade real e uma tabela extra para a entidade associativa que as une. A tabela da entidade associativa
+deve possuir uma chave primária composta pelas chaves estrangeiras que referenciam cada uma das tabelas associadas. 
+
+N pra 0 -> Criar tabelas com uma contendo chave estrangeira opcional (como 1 pra N).
+
+
+OBS: Atributos multivalorados (atributos com mais de um valor) de uma tabela viram tabela separada com chave primária referenciada 
+por uma chave estrangeira da tabela origem.

@@ -1,8 +1,5 @@
 use cadastro;
 show create table cursos; # exibe o comando sql usando pra criar a estrutura da tabela
-describe cursos; # describe é para exibir detalhes da tabela
-
-SELECT * FROM cursos;
 
 # default <valor padrao> -> define um valor padrão pra uma coluna, caso não seja passado nenhum valor.
 
@@ -20,16 +17,20 @@ CREATE TABLE IF NOT EXISTS cursos(
     ano YEAR NOT NULL DEFAULT '2016'
 )DEFAULT CHARSET=utf8;
 
-ALTER TABLE cursos CHANGE COLUMN totaulas aulas int UNSIGNED; # renomea totaulas para aulas
+ALTER TABLE cursos CHANGE COLUMN totaulas aulas int UNSIGNED;
 
-ALTER TABLE cursos ADD COLUMN id int UNSIGNED FIRST;            # cria coluna id do tipo inteiro positivo como primeira coluna da tabela
-ALTER TABLE cursos CHANGE COLUMN id idcurso int UNSIGNED;       # renomeia id para id curso redefinindo suas propriedades (CHANGE COLUMN obriga a redefinir)
-ALTER TABLE cursos CHANGE COLUMN idcurso id_curso int UNSIGNED; # renomeia idcurso para id_curso redefinindo duas propriedades
+ALTER TABLE cursos ADD COLUMN id int UNSIGNED FIRST;
+ALTER TABLE cursos CHANGE COLUMN id idcurso int UNSIGNED;
+ALTER TABLE cursos CHANGE COLUMN idcurso id_curso int UNSIGNED;
 
 ALTER TABLE cursos ADD COLUMN descricao text ;
 
 ALTER TABLE cursos ADD PRIMARY KEY(id);
 DROP TABLE cursos;  
+
+describe cursos; # describe é para exibir detalhes da tabela
+
+SELECT * FROM cursos;
 
 # INSERT INTO <tabela> VALUE(<valores>) -> VALUE adiciona valores a apenas um registro.
 # INSERT INTO <tabela> VALUES(<valores>) -> VALUES adciona valores a um ou vários registros.

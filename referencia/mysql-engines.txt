@@ -1,19 +1,56 @@
+Engines 
+
 Engine -> É o "motor" ou o mecanismo que realiza o armazenamento, manipulação e consulta de dados em um DBMS/SGBD 
-relacional ou não relacional.
+relacional ou não relacional. O mecanismo pode ser definido ne criação das tabelas.
 Um mesmo SGBD pode escolher entre uma variedade de engines com diferentes mecanismos que atendam às necessidades do projeto de banco de dados.
 
-O MySQL usa a engine InnoDB por padrão, que possui suporte para transações ACID (Atomicidade, Consistencia, Isolamento e Durabiliade), integridade referencial.
-MyISAM é um mecanismo mais antigo que não suporta transações ACID, mas é otimizado para grandes quantidades de leituras.
+Ex: CREATE DATABASE `meu_banco`                                  # o charset e na tabela é redundante pra fins de exemplo
+	DEFAULT CHARACTER SET utf8  	                         # pra mostrar que pode ser definido na criação da tabela ou do database.			                                                              # No MySQL, a engine só pode ser definida na tabela.                                        
+	DEFAULT COLLATE utf8_general_ci;                         # No MySQL, a engine só pode ser definida na tabela.
+
+    CREATE TABLE `meu_banco`.`tabela_InnoDB` ( 
+	`coluna_id` int UNSIGNED PRIMARY KEY AUTO_INCREMENT 
+     )
+    CHARSET utf8
+    COLLATE utf8_general_ci
+    ENGINE = InnoDB;                  
+
+Explicação:
+
+    ENGINE = InnoDB -> Define que a tabela usá o mecanismo InnoDB para armazenamento, leitura e manipulação de dados.
+
+    DEFAULT CHARACTER SET utf8/CHARSET utf8 -> Define que a tabela ou o banco aceita conjunto de caracteres especiais e com acentuação.
+
+    DEFAULT COLLATE utf8_general_ci/COLLATE utf8_general_ci -> Após o CHARACTER SET ou CHARSET, a collation que define que a tabela ou o banco 
+    não diferenciará caracteres minúsculos e maiúsculos (sem case sensitive).
 
 
-Uma transação é um conjunto de operações de leitura, escrita ou definição de dados que são tratadas como uma mesma unidade de trabalho no banco de dados.
+== TRANSAÇÔES ACID ==
+
+O MySQL usa a engine InnoDB por padrão, que possui suporte para transações ACID (Atomicidade, Consistencia, Isolamento e Durabiliade) 
+e integridade referencial.
+
+	ExtraDBD suporta transações ACID com alto desempenho.
+	MyISAM é um mecanismo mais antigo que não suporta transações ACID, mas é otimizado para grandes quantidades de leituras.		
+	XtraDB e InoDB esuportam chaves estrangeiras, MyISAM não.
+
+== ACID == 
+
+Uma transação é um conjunto de operações de leitura, escrita ou definição de dados que são tratadas como uma mesma unidade de 
+trabalho no banco de dados. Cada transação deve ser atômica, consistente, isolada e durável para garantir a consistência e integridade]
+do banco.
+
 ACID define um conjunto de princípios que as transações devem aderir para garantir que a integridade do banco de dados.
 
-Atomicidade -> Transações devem ser tratadas como uma unidade de trabalho que são realizadas com sucesso ou caso contrário são anuladas.
+Atomicidade -> Transações devem ser tratadas como uma unidade de trabalho que é realizada 
+com sucesso ou caso contrário é revertida/anulada (rollback).
 
-Consistência -> Uma transação deve levar o banco de um estado consistente (válido) para outro estado consistente, não importa quais operações sejam realizadas.
+Consistência -> Uma transação deve levar o banco de um estado consistente (válido) para outro estado consistente, 
+não importa quais operações sejam realizadas.
 
-Isolamento -> Uma transação não pode interferir no resultado de outra transação concorrente enquanto não tiver sido concluída.
-As operações da transação só ficam visíveis pra outras transações após ser concluída (commited).
+Isolamento -> Uma transação não pode interferir no resultado de outra transação concorrente enquanto a mesma não tiver sido concluída.
+As operações da transação só ficam visíveis pra outras transações após ser comitada (commited).
 
-Durabilidade -> Quando uma transação é concluída (commited) suas alterações não podem ser revertidas, mesmo em casos de falha no sistema.
+Durabilidade -> Quando uma transação é commitada/salva, suas alterações não podem ser revertidas mesmo em casos de falha no sistema.
+
+

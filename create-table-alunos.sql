@@ -17,63 +17,6 @@ CREATE TABLE IF NOT EXISTS alunos(
     PRIMARY KEY(id_aluno)
 )default charset=utf8;
 
-ALTER TABLE cadastro.alunos DROP id_aluno;
-
-ALTER TABLE cadastro.alunos 
-	ADD id_aluno int UNSIGNED NOT NULL,
-		ADD PRIMARY KEY(id_aluno);
-
-ALTER TABLE cadastro.alunos 
-	ADD profissao varchar(30) NULL 
-		AFTER nascimento;
-        
-UPDATE cadastro.alunos 
-	SET profissao = 'programador'
-		WHERE id_aluno IN(1,3,5,7);
-
-UPDATE cadastro.alunos
-	SET profissao = 'gestor'
-		WHERE nascimento BETWEEN '1970-01-01' AND '1980-12-31';
-        
-UPDATE cadastro.alunos
-	SET profissao = 'professor'
-		 WHERE nome LIKE '%SILVA%' AND peso>70;
-
-UPDATE cadastro.alunos SET profissao = 'arquiteto'
-	WHERE nacionalidade 
-		NOT LIKE 'brasil' AND id_aluno NOT IN(1,3,5,7);
-		
-        
-UPDATE alunos SET profissao= null;
-
-INSERT INTO alunos(nome,nascimento,sexo,peso,altura,nacionalidade) 
-	VALUES('GODOFREDO','1984-01-02','M','78.5','1.83',default),
-          ('MARIA','1999-12-30','F', 55.2, 1.65,'PORTUGAL'),
-          ('JOSÉ','1977-08-16','M', 73.1, 1.72,'ESPANHA'),
-          ('JULIA','1957-09-21','F', 68.0, 1.42,default),
-          ('JOAO','1970-09-21','M',78.0,1.80,default),
-		  ('PEDRO','1999-08-13','M',80.6,1.78,default),
-          ('CREUZA','1961-01-04','F','60.1',1.56,'URUGUAI'),
-          ('ARNALDO','1985-05-02','M','71.2','1.62','CHILE');
-use cadastro;
-SELECT * FROM cadastro.alunos;
-DESCRIBE cadastro.alunos;
-TRUNCATE TABLE cadastro.alunos;
-
-CREATE TABLE IF NOT EXISTS alunos(
-	id_aluno int UNSIGNED NOT NULL AUTO_INCREMENT,
-    # `ìd aluno` int UNSIGNED NOT NULL AUTO_INCREMENT - As crases (backticks/graves) permitem inserir espaços, caracteres especiais
-														# e palavras reservadas do SQL em nomes de coluna e tabela. OBS: Usar espaços é uma má pratica.
-                    									# Alguns usam sempre crase por convenção.
-    `nome` VARCHAR(30) NOT NULL,
-    `nascimento` DATE NOT NULL,
-    `sexo` ENUM('F','M'),
-    `peso` DECIMAL(5,2),
-    `altura` DECIMAL(3,2),
-    `nacionalidade` VARCHAR(30) DEFAULT 'BRASIL',
-    PRIMARY KEY(id_aluno)
-)default charset=utf8;
-
 INSERT INTO alunos(nome,nascimento,sexo,peso,altura,nacionalidade) 
 	VALUES('GODOFREDO','1984-01-02','M','78.5','1.83',default),
           ('MARIA','1999-12-30','F', 55.2, 1.65,'PORTUGAL'),
